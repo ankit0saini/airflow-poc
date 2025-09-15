@@ -1,4 +1,2 @@
-smbprotocol
-azure-identity
-azure-keyvault-secrets
+apache-airflow-providers-microsoft-azure==8.5.0
 pyspark==3.5.2
