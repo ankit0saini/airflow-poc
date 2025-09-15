@@ -3,7 +3,7 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime
 
 def hello_world():
-    pri("Hello Astronomer!")
+    print("Hello Astronomer!")
 
 with DAG(
     dag_id='first_dag',
