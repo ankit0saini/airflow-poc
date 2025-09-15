@@ -3,11 +3,6 @@ from airflow.operators.python import PythonOperator
 from airflow.providers.microsoft.azure.hooks.data_lake import AzureDataLakeStorageV2Hook
 from datetime import datetime
 import os
-from io import BytesIO
-import pandas as pd
-from io import BytesIO, StringIO
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import current_timestamp
 import tempfile
 import glob
 
@@ -22,6 +17,9 @@ ADLS_FILE_PATH = "non_fan_touchpoint/"
 
 
 def transform_adls_file(**context):
+    
+    from pyspark.sql import SparkSession
+    from pyspark.sql.functions import current_timestamp
 
     SOURCE_PATH = "non_fan_touchpoints/industry.csv"
     TARGET_PATH = "non_fan_touchpoints/processed/industry.csv"

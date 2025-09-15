@@ -1,2 +1,6 @@
 project:
   name: astronomer-projects
+
+deploy:
+  deployment: cmfl5o1081jen01riqg1uzwbt
+  branch: main
