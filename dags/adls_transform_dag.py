@@ -15,7 +15,7 @@ ADLS_CONN_ID = "azure_con"
 
 # Paths
 ADLS_CONTAINER = "raw_zone"
-ADLS_FILE_PATH = "non_fan_touchpoints/paidmedia/mediahub/raw_file/"
+ADLS_FILE_PATH = "non_fan_touchpoint/"
 
 # file_system_name = "raw-zone"
 # adls_dir = "non_fan_touchpoints/paidmedia/mediahub/"
@@ -23,8 +23,8 @@ ADLS_FILE_PATH = "non_fan_touchpoints/paidmedia/mediahub/raw_file/"
 
 def transform_adls_file(**context):
 
-    SOURCE_PATH = "non_fan_touchpoints/paidmedia/mediahub/raw_file/bigquery_datastream_2146_2024_05_06.csv"
-    TARGET_PATH = "non_fan_touchpoints/paidmedia/mediahub/processed_file/bigquery_datastream_2146_2024_05_06.csv"
+    SOURCE_PATH = "non_fan_touchpoints/industry.csv"
+    TARGET_PATH = "non_fan_touchpoints/processed/industry.csv"
 
     # 1. Connect to ADLS
     adls_hook = AzureDataLakeStorageV2Hook(adls_conn_id=ADLS_CONN_ID)
