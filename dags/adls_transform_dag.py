@@ -6,8 +6,6 @@ from datetime import datetime
 ADLS_CONN_ID = "azure_con"
 ADLS_CONTAINER = "raw-zone"
 
-print(">>> adls_transform_dag.py loaded by Airflow parser")
-
 def transform_adls_file(**context):
     import os, tempfile, glob
     from pyspark.sql import SparkSession
