@@ -18,8 +18,8 @@ def transform_adls_file(**context):
     client_secret = "nge8Q~dVv1c81rQScijB0M4N50zbn~sQGpwebbZl"
     account_name = "pocstoank"
 
-    SOURCE_PATH = "non_fan_touchpoints/industry.csv"
-    TARGET_PATH = "non_fan_touchpoints/processed/industry.csv"
+    SOURCE_PATH = "non_fan_touchpoint/industry.csv"
+    TARGET_PATH = "non_fan_touchpoint/processed/industry.csv"
     
     credential = ClientSecretCredential(
         tenant_id=tenant_id,
