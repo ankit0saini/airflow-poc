@@ -23,7 +23,7 @@ def test_adls_manual(**context):
 
     filesystem_client = service_client.get_file_system_client("raw-zone")
     for path in filesystem_client.get_paths():
-        print("Found:", path.name)
+        print("Found path(s):", path.name)
 
 with DAG(
     dag_id="manual_adls_gen2_connection",
