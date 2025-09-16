@@ -21,7 +21,7 @@ def test_adls_manual(**context):
         credential=credential
     )
 
-    filesystem_client = service_client.get_file_system_client("my-container")
+    filesystem_client = service_client.get_file_system_client("raw-zone")
     for path in filesystem_client.get_paths():
         print("Found:", path.name)
 
