@@ -10,7 +10,7 @@ def list_adls_files(**context):
     file_system = "raw_zone"             # container name
 
     # Astronomer will inject workload identity here
-    credential = DefaultAzureCredential()
+    credential = DefaultAzureCredential(managed_identity_client_id="4cee8dbc-c708-4543-8cb2-1c14b00417b0")
 
     # Build ADLS Gen2 client
     service_client = DataLakeServiceClient(
