@@ -5,7 +5,8 @@ FROM astrocrpublic.azurecr.io/runtime:3.0-10
 # Install Java
 USER root
 RUN apt-get update && \
-    apt-get install -y openjdk-11-jdk && \
+    apt-get install -y wget gnupg && \
+    apt-get install -y openjdk-11-jre-headless && \
     apt-get clean
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
