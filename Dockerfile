@@ -18,7 +18,7 @@ RUN curl -fsSL https://github.com/adoptium/temurin11-binaries/releases/download/
     && tar -xzf /tmp/jdk.tar.gz -C /usr/lib/jvm \
     && rm /tmp/jdk.tar.gz
 
-ENV JAVA_HOME=/usr/lib/jvm/jdk-11.0.21+9
+ENV JAVA_HOME=/usr/lib/jvm/jdk-11.0.21+9/jdk-11.0.21+9
 ENV PATH=$JAVA_HOME/bin:$PATH
 
 # Install PySpark
