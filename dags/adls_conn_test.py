@@ -1,6 +1,7 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime
+import os
 
 def list_adls_files(**context):
     from azure.identity import DefaultAzureCredential
@@ -10,8 +11,9 @@ def list_adls_files(**context):
     file_system = "raw_zone"             # container name
 
     # Astronomer will inject workload identity here
-    credential = DefaultAzureCredential(managed_identity_client_id="4cee8dbc-c708-4543-8cb2-1c14b00417b0")
-
+    credential = DefaultAzureCredential(
+    managed_identity_client_id=os.getenv("AZURE_CLIENT_ID"))
+    
     # Build ADLS Gen2 client
     service_client = DataLakeServiceClient(
         f"https://{account_name}.dfs.core.windows.net",
