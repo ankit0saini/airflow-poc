@@ -1,32 +1,37 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.providers.microsoft.azure.hooks.data_lake import AzureDataLakeStorageV2Hook
 from datetime import datetime
 
-ADLS_CONN_ID = "azure_con"
-ADLS_CONTAINER = "raw_zone"
-
-print(">>> adls_connection_test.py loaded by Airflow parser")
-
 def list_adls_files(**context):
-    hook = AzureDataLakeStorageV2Hook(adls_conn_id=ADLS_CONN_ID)
-    client = hook.get_conn()
-    file_system_client = client.get_file_system_client(ADLS_CONTAINER)
+    from azure.identity import DefaultAzureCredential
+    from azure.storage.filedatalake import DataLakeServiceClient
 
-    print(f"Listing files in container: {ADLS_CONTAINER}")
-    paths = file_system_client.get_paths(path="")
+    account_name = "pocstoank"   # e.g. mystorageaccount
+    file_system = "raw_zone"             # container name
+
+    # Astronomer will inject workload identity here
+    credential = DefaultAzureCredential()
+
+    # Build ADLS Gen2 client
+    service_client = DataLakeServiceClient(
+        f"https://{account_name}.dfs.core.windows.net",
+        credential=credential
+    )
+
+    fs_client = service_client.get_file_system_client(file_system)
+
+    print(f"Listing files in container: {file_system}")
+    paths = fs_client.get_paths()
     for path in paths:
-        print(f"- {path.name}")
+        print(" -", path.name)
 
 with DAG(
-    dag_id="adls_connection_test",
+    dag_id="adls_identity_test",
     start_date=datetime(2023, 1, 1),
     schedule=None,
     catchup=False,
-    tags=["adls", "test"],
 ) as dag:
-
-    list_files = PythonOperator(
+    test_task = PythonOperator(
         task_id="list_adls_files",
         python_callable=list_adls_files,
     )
