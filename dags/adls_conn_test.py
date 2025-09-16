@@ -8,7 +8,7 @@ def list_adls_files(**context):
     from azure.storage.filedatalake import DataLakeServiceClient
 
     account_name = "pocstoank"   # e.g. mystorageaccount
-    file_system = "raw_zone"             # container name
+    file_system = "raw-zone"             # container name
 
     # Astronomer will inject workload identity here
     credential = DefaultAzureCredential(

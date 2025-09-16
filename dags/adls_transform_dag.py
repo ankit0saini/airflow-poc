@@ -4,7 +4,7 @@ from airflow.providers.microsoft.azure.hooks.data_lake import AzureDataLakeStora
 from datetime import datetime
 
 ADLS_CONN_ID = "azure_con"
-ADLS_CONTAINER = "raw_zone"
+ADLS_CONTAINER = "raw-zone"
 
 print(">>> adls_transform_dag.py loaded by Airflow parser")
 
