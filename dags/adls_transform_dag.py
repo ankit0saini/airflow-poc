@@ -9,7 +9,6 @@ ADLS_CONTAINER = "raw-zone"
 print(">>> adls_transform_dag.py loaded by Airflow parser")
 
 def transform_adls_file(**context):
-    # ✅ Keep heavy imports inside the function
     import os, tempfile, glob
     from pyspark.sql import SparkSession
     from pyspark.sql.functions import current_timestamp
